@@ -15,6 +15,7 @@ defmodule Serval.MixProject do
   def application do
     [
       extra_applications: [:logger],
+      env: [output_directory: "/public"],
       mod: {Serval.Application, []}
     ]
   end

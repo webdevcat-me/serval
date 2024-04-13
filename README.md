@@ -1,21 +1,11 @@
 # Serval
 
-**TODO: Add description**
+The world's simplest static-website generator!
 
-## Installation
+## Build Docker image
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `serval` to your list of dependencies in `mix.exs`:
+    docker build -t serval_dev .
 
-```elixir
-def deps do
-  [
-    {:serval, "~> 0.1.0"}
-  ]
-end
-```
+## Build static site
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/serval>.
-
+    docker run --rm -w /opt -v $PWD:/opt serval_dev mix build
