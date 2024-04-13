@@ -9,3 +9,7 @@ The world's simplest static-website generator!
 ## Build static site
 
     docker run --rm -w /opt -v $PWD:/opt serval_dev mix build
+
+## Run tests
+
+    docker run --rm -w /opt -v $PWD:/opt serval_dev mix test
