@@ -1,20 +1,21 @@
 defmodule Serval.Application do
-  # See https://hexdocs.pm/elixir/Application.html
-  # for more information on OTP Applications
   @moduledoc false
 
   use Application
+  require Logger
 
   @impl true
   def start(_type, _args) do
+    Mix.Tasks.Build.run([])
+
     children = [
-      # Starts a worker by calling: Serval.Worker.start_link(arg)
-      # {Serval.Worker, arg}
+      {Plug.Cowboy, plug: Serval.Plug, scheme: :http, options: [port: 4000]}
     ]
 
-    # See https://hexdocs.pm/elixir/Supervisor.html
-    # for other strategies and supported options
     opts = [strategy: :one_for_one, name: Serval.Supervisor]
+
+    Logger.info("Plug now running on localhost:4000")
+
     Supervisor.start_link(children, opts)
   end
 end
